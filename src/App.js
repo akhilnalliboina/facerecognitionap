@@ -77,18 +77,14 @@ class App extends Component {
 
   onCountChange = (response) => {
     if (response) {
-      fetch(
-        "https://boiling-basin-26975.herokuapp.com/image",
-        { mode: "no-cors" },
-        {
-          method: "put",
-          headers: { "Content-Type": "application/json" },
+      fetch("https://boiling-basin-26975.herokuapp.com/image", {
+        method: "put",
+        headers: { "Content-Type": "application/json" },
 
-          body: JSON.stringify({
-            id: this.state.user.id,
-          }),
-        }
-      )
+        body: JSON.stringify({
+          id: this.state.user.id,
+        }),
+      })
         .then((response) => response.json())
         .then((count) => {
           this.setState(Object.assign(this.state.user, { entries: count }));
@@ -99,17 +95,13 @@ class App extends Component {
 
   onButtonSubmit = (event) => {
     this.setState({ imageURL: this.state.input });
-    fetch(
-      "https://boiling-basin-26975.herokuapp.com/imageURL",
-      { mode: "no-cors" },
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          input: this.state.input,
-        }),
-      }
-    )
+    fetch("https://boiling-basin-26975.herokuapp.com/imageURL", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: this.state.input,
+      }),
+    })
       .then((response) => response.json())
       .then((response) => {
         this.onCountChange(response);

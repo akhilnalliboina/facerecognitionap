@@ -17,18 +17,14 @@ class Signin extends React.Component {
   };
 
   onSubmitSignIn = () => {
-    fetch(
-      "https://boiling-basin-26975.herokuapp.com/signin",
-      { mode: "no-cors" },
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: this.state.signInEmail,
-          password: this.state.signInPassword,
-        }),
-      }
-    )
+    fetch("https://boiling-basin-26975.herokuapp.com/signin", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword,
+      }),
+    })
       .then((response) => response.json())
       .then((user) => {
         if (user.id) {
